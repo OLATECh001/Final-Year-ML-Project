@@ -1,8 +1,0 @@
-README.md
-setup.py
-Final_Year_ML_Project.egg-info/PKG-INFO
-Final_Year_ML_Project.egg-info/SOURCES.txt
-Final_Year_ML_Project.egg-info/dependency_links.txt
-Final_Year_ML_Project.egg-info/requires.txt
-Final_Year_ML_Project.egg-info/top_level.txt
-src/__init__.py
