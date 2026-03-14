@@ -1,6 +1,13 @@
 pandas
 numpy
-seaborn
 matplotlib
+seaborn
+catboost
+xgboost
+scikit-learn
+lightgbm
+dill
+Flask
+imbalanced-learn
 
--e .
+# -e .
