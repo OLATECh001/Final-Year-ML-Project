@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dropout Prediction</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🎓 Student Dropout Risk Prediction</h1>
+
+    <!-- <form action="/predictstudentdata" method="post" class="form-grid"> -->
+    <form action="{{ url_for('predict_datapoint') }}" method="post" class="form-grid">
+
+        <!-- Gender -->
+        <div class="form-group">
+            <label>Gender</label>
+            <select name="Gender" required>
+                <option value="0">Male</option>
+                <option value="1">Female</option>
+            </select>
+        </div>
+
+        <!-- Age -->
+        <div class="form-group">
+            <label>Age Range</label>
+            <select name="Age_Range" required>
+                <option value="0">16–19 years</option>
+                <option value="1">20–23 years</option>
+                <option value="2">24–27 years</option>
+                <option value="3">28–30 years</option>
+            </select>
+        </div>
+
+        <!-- Admission Year -->
+        <div class="form-group">
+            <label>Admission Year</label>
+            <select name="Admission_Year" required>
+                <option value="0">2021/2022</option>
+                <option value="1">2022/2023</option>
+                <option value="2">2023/2024</option>
+                <option value="3">2024/2025</option>
+                <option value="4">2025/2026</option>
+            </select>
+        </div>
+
+        <!-- Faculty -->
+        <div class="form-group">
+            <label>Faculty</label>
+            <select name="Faculty" required>
+                <option value="Computing and Informatics (FCI)">Computing and Informatics (FCI)</option>
+                <option value="Engineering and Technology (FET)">Engineering and Technology (FET)</option>
+                <option value="Pure and Applied Science (FPAS)">Pure and Applied Science (FPAS)</option>
+                <option value="Agricultural Science (FAS)">Agricultural Science (FAS)</option>
+                <option value="Nursing Science (FNS)">Nursing Science (FNS)</option>
+                <option value="Basic Medical Sciences (FMBS)">Basic Medical Sciences (FMBS)</option>
+                <option value="Management Sciences (FMGS)">Management Sciences (FMGS)</option>
+                <option value="Food & Consumer Sciences (FFCS)">Food & Consumer Sciences (FFCS)</option>
+                <option value="Arts and Social Science (FASS)">Arts and Social Science (FASS)</option>
+                <option value="Environmental Sciences (FES)">Environmental Sciences (FES)</option>
+            </select>
+        </div>
+
+        <!-- Level -->
+        <div class="form-group">
+            <label>Level of Study</label>
+            <select name="Level_of_Study" required>
+                <option value="0">100 Level</option>
+                <option value="1">200 Level</option>
+                <option value="2">300 Level</option>
+                <option value="3">400 Level</option>
+                <option value="4">500 Level</option>
+            </select>
+        </div>
+
+        <!-- CGPA -->
+        <div class="form-group">
+            <label>CGPA Range</label>
+            <select name="CGPA_Range" required>
+                <option value="0">4.50 – 5.00 (First Class)</option>
+                <option value="1">3.50 – 4.49 (Second Class Upper)</option>
+                <option value="2">2.50 – 3.49 (Second Class Lower)</option>
+                <option value="3">1.50 – 2.49 (Third Class)</option>
+                <option value="4">1.00 – 1.49 (Pass)</option>
+                <option value="5">Below 1.00 (Probation)</option>
+            </select>
+        </div>
+
+        <!-- Class Attendance -->
+        <div class="form-group">
+            <label>Class Attendance</label>
+            <select name="Class_Attendance" required>
+                <option value="1">Regular</option>
+                <option value="0">Irregular</option>
+            </select> 
+        </div>
+
+        <!-- Participation in Clubs/Activities -->
+        <div class="form-group">
+            <label>Participation in Clubs/Activities</label>
+            <select name="Participation_in_Clubs/Activities" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+        </div>
+
+        <!-- Work -->
+        <div class="form-group">
+            <label>Work While Studying</label>
+            <select name="Do_you_work_while_studying?" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <!-- Internet -->
+        <div class="form-group">
+            <label>Internet Access</label>
+            <select name="Internet_Access">
+                <option value="0">Good</option>
+                <option value="1">Manage</option>
+                <option value="2">Poor</option>
+            </select>
+        </div>
+
+        <!-- Stress -->
+        <div class="form-group">
+            <label>Stress Level</label>
+            <select name="School_Activities_Stress" required>
+                <option value="0">Not Stressful</option>
+                <option value="1">Moderately Stressful</option>
+                <option value="2">Very Stressful</option>
+            </select>
+        </div>
+
+        <!--Accomodation Type-->
+        <div class="form-group">
+            <label>Accommodation Type</label>
+            <select name="Accommodation_Type" required>
+                <option value="0">Squatting</option>
+                <option value="1">Hostel</option>
+            </select>
+        </div>
+
+        <!-- Financial Support -->
+        <div class="form-group">
+            <label>Financial Support</label>
+            <select name="Financial_Support_Source" required>
+                <option value="0">Yes</option>
+                <option value="1">No</option>
+            </select>
+        </div>
+
+    
+        <!-- Study Hours -->
+        <div class="form-group">
+            <label>Study Hours per Week</label>
+            <select name="Hours_of_Study_per_Week" required>
+                <option value="0">Less than 5 hours</option>
+                <option value="1">5–10 hours</option>
+                <option value="2">11–20 hours</option>
+                <option value="3">Above 20 hours</option>
+            </select>
+        </div>
+
+        <!-- Parent's Level of Education -->
+        <div class="form-group">
+            <label>Parent's Level of Education</label>
+            <select name="Parental_Level_of_Education" required>
+                <option value="0">No Education</option>
+                <option value="1">Secondary School</option>
+                <option value="2">Some College</option>
+                <option value="3">Bachelor’s Degree</option>
+                <option value="4">Master’s Degree</option>
+            </select>
+        </div>
+
+        <!-- Health Status -->
+        <div class="form-group">
+            <label>Health Status</label>
+            <select name="Health_Challenges" required>
+                <option value="0">No</option>
+                <option value="1">Yes, Minor</option>
+                <option value="2">Serious</option>
+            </select>
+        </div>
+
+        <!-- Academic Support -->
+        <div class="form-group">
+            <label>Academic Support</label>
+            <select name="Do_you_receive_academic_support_(tutorials, mentorship, etc.)?" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+        </div>
+
+        <!--scholarship status-->
+        <div class="form-group">
+            <label>Scholarship Status</label>
+            <select name="Scholarship_Status">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+        </div>
+
+
+        <!-- Submit -->
+        <div class="form-group full-width">
+            <input type="submit" value="Predict">
+        </div>
+        
+    </form>
+
+<!-- prediction Results -->
+    {% if prediction_text %}
+        <div class="result">
+            <h2>Prediction Result:</h2>
+            <p>{{ prediction_text }}</p>
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>'''
