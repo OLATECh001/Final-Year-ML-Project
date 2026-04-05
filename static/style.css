@@ -8,7 +8,8 @@
 
 /* Body */
 body {
-    background: linear-gradient(to right, #4facfe, #00f2fe);
+    background: white;
+    background-repeat: no-repeat;
     padding: 20px;
 }
 
@@ -51,7 +52,8 @@ label {
 }
 
 /* Inputs */
-select, input {
+select,
+input {
     padding: 10px;
     border-radius: 10px;
     border: 1px solid #ccc;
@@ -60,13 +62,14 @@ select, input {
 }
 
 /* Hover Effects */
-select:hover, input:hover {
-    border-color: #4facfe;
+select:hover,
+input:hover {
+    border-color: #C0A062;
 }
 
 /* Button */
 input[type="submit"] {
-    background: linear-gradient(to right, #43e97b, #38f9d7);
+    background: linear-gradient(to right, #C0A062, #f9bf38e8);
     border: none;
     color: white;
     font-weight: bold;
@@ -75,7 +78,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background: linear-gradient(to right, #38f9d7, #43e97b);
+    background: linear-gradient(to left, #C0A062, #f9bf38e8);
 }
 
 /* Full Width Button */
@@ -83,11 +86,19 @@ input[type="submit"]:hover {
     grid-column: span 2;
 }
 
+/* footer */
+.foot {
+    margin-top: 30px;
+    text-align: center;
+    color: #555;
+    marquin-top: 20px;
+}
+
 /* Result Box */
 .result {
     margin-top: 20px;
     padding: 15px;
-    background: #222;
+    background: #C0A062;
     color: #fff;
     border-radius: 12px;
     text-align: center;

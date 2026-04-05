@@ -17,6 +17,7 @@
         <div class="form-group">
             <label>Gender</label>
             <select name="Gender" required>
+                <option selected disabled value="">Select Your Gender</option>
                 <option value="0">Male</option>
                 <option value="1">Female</option>
             </select>
@@ -26,6 +27,7 @@
         <div class="form-group">
             <label>Age Range</label>
             <select name="Age_Range" required>
+                <option selected disabled value="">Select Your Age Range</option>
                 <option value="0">16–19 years</option>
                 <option value="1">20–23 years</option>
                 <option value="2">24–27 years</option>
@@ -37,6 +39,7 @@
         <div class="form-group">
             <label>Admission Year</label>
             <select name="Admission_Year" required>
+                <option selected disabled value="">Select Admission Year</option>
                 <option value="0">2021/2022</option>
                 <option value="1">2022/2023</option>
                 <option value="2">2023/2024</option>
@@ -49,6 +52,7 @@
         <div class="form-group">
             <label>Faculty</label>
             <select name="Faculty" required>
+                <option selected disabled value="">Select Your Faculty</option>
                 <option value="Computing and Informatics (FCI)">Computing and Informatics (FCI)</option>
                 <option value="Engineering and Technology (FET)">Engineering and Technology (FET)</option>
                 <option value="Pure and Applied Science (FPAS)">Pure and Applied Science (FPAS)</option>
@@ -66,6 +70,7 @@
         <div class="form-group">
             <label>Level of Study</label>
             <select name="Level_of_Study" required>
+                <option selected disabled value="">Select Level of Study</option>
                 <option value="0">100 Level</option>
                 <option value="1">200 Level</option>
                 <option value="2">300 Level</option>
@@ -78,6 +83,7 @@
         <div class="form-group">
             <label>CGPA Range</label>
             <select name="CGPA_Range" required>
+                <option selected disabled value="">Select Your CGPA Range</option>
                 <option value="0">4.50 – 5.00 (First Class)</option>
                 <option value="1">3.50 – 4.49 (Second Class Upper)</option>
                 <option value="2">2.50 – 3.49 (Second Class Lower)</option>
@@ -91,6 +97,7 @@
         <div class="form-group">
             <label>Class Attendance</label>
             <select name="Class_Attendance" required>
+                <option selected disabled value="">Select Class Attendance</option>
                 <option value="1">Regular</option>
                 <option value="0">Irregular</option>
             </select> 
@@ -100,6 +107,7 @@
         <div class="form-group">
             <label>Participation in Clubs/Activities</label>
             <select name="Participation_in_Clubs/Activities" required>
+                <option selected disabled value="">Select Participation</option>
                 <option value="0">No</option>
                 <option value="1">Yes</option>
             </select>
@@ -109,6 +117,7 @@
         <div class="form-group">
             <label>Work While Studying</label>
             <select name="Do_you_work_while_studying?" required>
+                <option selected disabled value="">Select Work Status</option>
                 <option value="1">Yes</option>
                 <option value="0">No</option>
             </select>
@@ -118,6 +127,7 @@
         <div class="form-group">
             <label>Internet Access</label>
             <select name="Internet_Access">
+                <option selected disabled value="">Select Internet Access</option>
                 <option value="0">Good</option>
                 <option value="1">Manage</option>
                 <option value="2">Poor</option>
@@ -128,6 +138,7 @@
         <div class="form-group">
             <label>Stress Level</label>
             <select name="School_Activities_Stress" required>
+                <option selected disabled value="">Select Stress Level</option>
                 <option value="0">Not Stressful</option>
                 <option value="1">Moderately Stressful</option>
                 <option value="2">Very Stressful</option>
@@ -138,6 +149,7 @@
         <div class="form-group">
             <label>Accommodation Type</label>
             <select name="Accommodation_Type" required>
+                <option selected disabled value="">Select Accommodation Type</option>
                 <option value="0">Squatting</option>
                 <option value="1">Hostel</option>
             </select>
@@ -147,6 +159,7 @@
         <div class="form-group">
             <label>Financial Support</label>
             <select name="Financial_Support_Source" required>
+                <option selected disabled value="">Select Financial Support</option>
                 <option value="0">Yes</option>
                 <option value="1">No</option>
             </select>
@@ -157,6 +170,7 @@
         <div class="form-group">
             <label>Study Hours per Week</label>
             <select name="Hours_of_Study_per_Week" required>
+                <option selected disabled value="">Select Your Study Hours per Week</option>
                 <option value="0">Less than 5 hours</option>
                 <option value="1">5–10 hours</option>
                 <option value="2">11–20 hours</option>
@@ -168,6 +182,7 @@
         <div class="form-group">
             <label>Parent's Level of Education</label>
             <select name="Parental_Level_of_Education" required>
+                <option selected disabled value="">Select Your Parent's Level of Education</option>
                 <option value="0">No Education</option>
                 <option value="1">Secondary School</option>
                 <option value="2">Some College</option>
@@ -180,6 +195,7 @@
         <div class="form-group">
             <label>Health Status</label>
             <select name="Health_Challenges" required>
+                <option selected disabled value="">Select Your Health Status</option>
                 <option value="0">No</option>
                 <option value="1">Yes, Minor</option>
                 <option value="2">Serious</option>
@@ -190,6 +206,7 @@
         <div class="form-group">
             <label>Academic Support</label>
             <select name="Do_you_receive_academic_support_(tutorials, mentorship, etc.)?" required>
+                <option selected disabled value="">Select Academic Support</option>
                 <option value="0">No</option>
                 <option value="1">Yes</option>
             </select>
@@ -199,6 +216,7 @@
         <div class="form-group">
             <label>Scholarship Status</label>
             <select name="Scholarship_Status">
+                <option selected disabled value="">Select Scholarship Status</option>
                 <option value="0">No</option>
                 <option value="1">Yes</option>
             </select>
@@ -219,7 +237,14 @@
             <p>{{ prediction_text }}</p>
         </div>
     {% endif %}
-</div>
+
+    <footer text-align="center">
+        <div class="foot">
+        <p>@2026 Final Year MLOps Project | Olamide Rasheed</p>
+         </div>
+    </footer>
+</div> 
 
 </body>
-</html>'''
+</html>
+ 

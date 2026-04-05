@@ -8,19 +8,25 @@ import os
 
 class PredictPipeline:
     def __init__(self):
-        pass
+        try:
+            model_path = "artifacts/model.pkl"
+            preprocessor_path = "artifacts/preprocessor.pkl"
 
+            # 🔥 Save as class attributes
+            self.model = load_object(file_path=model_path)
+            self.preprocessor = load_object(file_path=preprocessor_path)
+
+        except Exception as e:
+            raise CustomException(e, sys)
+
+    
     def predict(self, features):
         try:
-            preprocessor_path = os.path.join("artifacts", "preprocessor.pkl")
-            model_path = os.path.join("artifacts", "model.pkl")
+            # Transform
+            data_scaled = self.preprocessor.transform(features)
 
-            preprocessor = load_object(preprocessor_path)
-            model = load_object(model_path)
-
-            data_scaled = preprocessor.transform(features)
-
-            preds = model.predict(data_scaled)
+            # Predict
+            preds = self.model.predict(data_scaled)
 
             return preds
 
