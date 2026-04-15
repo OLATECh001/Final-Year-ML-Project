@@ -106,7 +106,7 @@
         <!-- Participation in Clubs/Activities -->
         <div class="form-group">
             <label>Participation in Clubs/Activities</label>
-            <select name="Participation_in_Clubs/Activities" required>
+            <select name="Participation_in_Social_Activities" required>
                 <option selected disabled value="">Select Participation</option>
                 <option value="0">No</option>
                 <option value="1">Yes</option>
@@ -115,8 +115,8 @@
 
         <!-- Work -->
         <div class="form-group">
-            <label>Work While Studying</label>
-            <select name="Do_you_work_while_studying?" required>
+            <label>Working While Studying</label>
+            <select name="Working_while_studying" required>
                 <option selected disabled value="">Select Work Status</option>
                 <option value="1">Yes</option>
                 <option value="0">No</option>
@@ -205,7 +205,7 @@
         <!-- Academic Support -->
         <div class="form-group">
             <label>Academic Support</label>
-            <select name="Do_you_receive_academic_support_(tutorials, mentorship, etc.)?" required>
+            <select name="Academic_support" required>
                 <option selected disabled value="">Select Academic Support</option>
                 <option value="0">No</option>
                 <option value="1">Yes</option>
@@ -235,6 +235,7 @@
         <div class="result">
             <h2>Prediction Result:</h2>
             <p>{{ prediction_text }}</p>
+            
         </div>
     {% endif %}
 

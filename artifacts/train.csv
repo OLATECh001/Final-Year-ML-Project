@@ -1,4 +1,4 @@
-Gender,Age_Range,Admission_Year,Faculty,Level_of_Study,Parental_Level_of_Education,Financial_Support_Source,CGPA_Range,Hours_of_Study_per_Week,Class_Attendance,Accommodation_Type,Do_you_work_while_studying?,Internet_Access,Participation_in_Clubs/Activities,Scholarship_Status,"Do_you_receive_academic_support_(tutorials, mentorship, etc.)?",Health_Challenges,School_Activities_Stress,Dropout_Intention?
+Gender,Age_Range,Admission_Year,Faculty,Level_of_Study,Parental_Level_of_Education,Financial_Support_Source,CGPA_Range,Hours_of_Study_per_Week,Class_Attendance,Accommodation_Type,Working_while_studying,Internet_Access,Participation_in_Social_Activities,Scholarship_Status,Academic_support,Health_Challenges,School_Activities_Stress,Dropout_Risk
 1,1,2023/2024,Pure and Applied Science (FPAS),2,2,Parents/Guardians,4,2,1,1,1,1,0,0,1,0,2,0
 0,1,2023/2024,Basic Medical Sciences (FMBS),2,1,Parents/Guardians,5,1,1,1,0,1,1,0,0,1,1,0
 0,1,2024/2025,Computing and Informatics (FCI),1,4,Self-sponsored,5,3,1,1,0,2,0,0,1,0,1,0

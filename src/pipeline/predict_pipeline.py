@@ -9,8 +9,8 @@ import os
 class PredictPipeline:
     def __init__(self):
         try:
-            model_path = "artifacts/model.pkl"
-            preprocessor_path = "artifacts/preprocessor.pkl"
+            model_path = "artifacts/student_dropout_model.pkl"
+            preprocessor_path = "artifacts/scaler.pkl"
 
             # 🔥 Save as class attributes
             self.model = load_object(file_path=model_path)
@@ -38,10 +38,10 @@ class CustomData:
         self,
         Gender: int,
         Accommodation_Type: int,
-        Do_you_work_while_studying: int,
-        Participation_in_Clubs: int,
+        Working_while_studying: int,
+        Participation_in_Social_Activities: int,
         Scholarship_Status: int,
-        Academic_Support: int,
+        Academic_support: int,
         Age_Range: int,
         Level_of_Study: int,
         Health_Challenges: int,
@@ -58,10 +58,10 @@ class CustomData:
 
         self.Gender = Gender
         self.Accommodation_Type = Accommodation_Type
-        self.Do_you_work_while_studying = Do_you_work_while_studying
-        self.Participation_in_Clubs = Participation_in_Clubs
+        self.Participation_in_Social_Activities = Participation_in_Social_Activities
         self.Scholarship_Status = Scholarship_Status
-        self.Academic_Support = Academic_Support
+        self.Academic_support = Academic_support
+        self.Working_while_studying = Working_while_studying
         self.Age_Range = Age_Range
         self.Level_of_Study = Level_of_Study
         self.Health_Challenges = Health_Challenges
@@ -81,10 +81,10 @@ class CustomData:
             custom_data_input_dict = {
                 "Gender": [self.Gender],
                 "Accommodation_Type": [self.Accommodation_Type],
-                "Do_you_work_while_studying?": [self.Do_you_work_while_studying],
-                "Participation_in_Clubs/Activities": [self.Participation_in_Clubs],
+                "Working_while_studying": [self.Working_while_studying],
+                "Participation_in_Social_Activities": [self.Participation_in_Social_Activities],
                 "Scholarship_Status": [self.Scholarship_Status],
-                "Do_you_receive_academic_support_(tutorials, mentorship, etc.)?": [self.Academic_Support],
+                "Academic_support": [self.Academic_support],
                 "Age_Range": [self.Age_Range],
                 "Level_of_Study": [self.Level_of_Study],
                 "Health_Challenges": [self.Health_Challenges],

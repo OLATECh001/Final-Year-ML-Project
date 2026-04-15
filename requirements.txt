@@ -10,5 +10,8 @@ dill
 Flask
 pickle
 imbalanced-learn
+shap
+mlflow
+smote
 
 # -e .

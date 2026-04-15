@@ -26,10 +26,10 @@ def predict_datapoint():
         data = CustomData(
             Gender=int(request.form.get('Gender')),
             Accommodation_Type=int(request.form.get('Accommodation_Type')),
-            Do_you_work_while_studying=int(request.form.get('Do_you_work_while_studying?')),
-            Participation_in_Clubs=int(request.form.get('Participation_in_Clubs/Activities')),
+            Working_while_studying=int(request.form.get('Working_while_studying')),
+            Participation_in_Social_Activities=int(request.form.get('Participation_in_Social_Activities')),
             Scholarship_Status=int(request.form.get('Scholarship_Status')),
-            Academic_Support=int(request.form.get('Do_you_receive_academic_support_(tutorials, mentorship, etc.)?')),
+            Academic_support=int(request.form.get('Academic_support')),
 
             Age_Range=int(request.form.get('Age_Range')),
             Level_of_Study=int(request.form.get('Level_of_Study')),
@@ -50,16 +50,12 @@ def predict_datapoint():
         print("DATAFRAME:\n", pred_df)
 
         predict_pipeline = PredictPipeline()
-        # results = predict_pipeline.predict(pred_df)
 
-        # print("PREDICTION RESULTS:", results)
-
-        # predict_pipeline = PredictPipeline()
 
         # Prediction
         results = predict_pipeline.predict(pred_df)
 
-        # 🔥 Probability (confidence score)
+        # Probability (confidence score)
         proba = predict_pipeline.model.predict_proba(
             predict_pipeline.preprocessor.transform(pred_df)
         )[0][1]
@@ -68,15 +64,16 @@ def predict_datapoint():
 
         print("PREDICTION RESULTS:", results)
         print("CONFIDENCE:", confidence)
+        print("THE FEATURES INFLUENCING THE DROPOUT RISK ARE:", predict_pipeline.preprocessor.get_feature_names_out())
 
         # Label
         if results[0] == 1:
-            prediction_text = f"High Risk of Dropout ({confidence}% confidence)"
+            prediction_text = f"High Risk of Dropout ({confidence}% confidence)" and "The features influencing the dropout risk are: " + ", ".join(predict_pipeline.preprocessor.get_feature_names_out())
         else:
-            prediction_text = f"Low Risk of Dropout ({confidence}% confidence)"
+            prediction_text = f"Low Risk of Dropout ({confidence}% confidence) " and "The features influencing the dropout risk are: " + ", ".join(predict_pipeline.preprocessor.get_feature_names_out())
 
         return render_template('home.html', results=results[0], prediction_text=prediction_text)
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1")
+    app.run(host="127.0.0.1", debug=True, port=5001)
