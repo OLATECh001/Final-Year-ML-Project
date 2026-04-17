@@ -1,106 +1,44 @@
-import sys
-from src.exception import CustomException
-from src.utils import load_object
-import pandas as pd
-
-
 import os
+import sys
+import pandas as pd
+import numpy as np
+import pickle
+
+from src.exception import CustomException
+from src.logger import logging
+
 
 class PredictPipeline:
     def __init__(self):
-        try:
-            model_path = "artifacts/student_dropout_model.pkl"
-            preprocessor_path = "artifacts/scaler.pkl"
+        pass
 
-            # 🔥 Save as class attributes
-            self.model = load_object(file_path=model_path)
-            self.preprocessor = load_object(file_path=preprocessor_path)
-
-        except Exception as e:
-            raise CustomException(e, sys)
-
-    
     def predict(self, features):
         try:
-            # Transform
-            data_scaled = self.preprocessor.transform(features)
+            model_path = os.path.join("artifacts", "model.pkl")
 
-            # Predict
-            preds = self.model.predict(data_scaled)
+            logging.info("Loading trained model")
+            model = pickle.load(open(model_path, "rb"))
 
-            return preds
+            logging.info("Making prediction")
+
+            # 🔥 XGBoost → NO SCALING
+            data = features
+
+            # 🔥 Use probability + threshold (VERY IMPORTANT)
+            y_prob = model.predict_proba(data)[:, 1]
+            y_pred = (y_prob > 0.2).astype(int)
+
+            return y_pred
 
         except Exception as e:
             raise CustomException(e, sys)
 
 class CustomData:
-    def __init__(
-        self,
-        Gender: int,
-        Accommodation_Type: int,
-        Working_while_studying: int,
-        Participation_in_Social_Activities: int,
-        Scholarship_Status: int,
-        Academic_support: int,
-        Age_Range: int,
-        Level_of_Study: int,
-        Health_Challenges: int,
-        School_Activities_Stress: int,
-        Internet_Access: int,
-        CGPA_Range: int,
-        Parental_Level_of_Education: int,
-        Hours_of_Study_per_Week: int,
-        Class_Attendance: int,
-        Faculty: str,
-        Financial_Support_Source: str,
-        Admission_Year: str
-    ):
+    def __init__(self, **kwargs):
+        self.data = kwargs
 
-        self.Gender = Gender
-        self.Accommodation_Type = Accommodation_Type
-        self.Participation_in_Social_Activities = Participation_in_Social_Activities
-        self.Scholarship_Status = Scholarship_Status
-        self.Academic_support = Academic_support
-        self.Working_while_studying = Working_while_studying
-        self.Age_Range = Age_Range
-        self.Level_of_Study = Level_of_Study
-        self.Health_Challenges = Health_Challenges
-        self.School_Activities_Stress = School_Activities_Stress
-        self.Internet_Access = Internet_Access
-        self.CGPA_Range = CGPA_Range
-        self.Parental_Level_of_Education = Parental_Level_of_Education
-        self.Hours_of_Study_per_Week = Hours_of_Study_per_Week
-        self.Class_Attendance = Class_Attendance
-        self.Faculty = Faculty
-        self.Financial_Support_Source = Financial_Support_Source
-        self.Admission_Year = Admission_Year
-
-
-    def get_data_as_data_frame(self):
+    def get_data_as_dataframe(self):
         try:
-            custom_data_input_dict = {
-                "Gender": [self.Gender],
-                "Accommodation_Type": [self.Accommodation_Type],
-                "Working_while_studying": [self.Working_while_studying],
-                "Participation_in_Social_Activities": [self.Participation_in_Social_Activities],
-                "Scholarship_Status": [self.Scholarship_Status],
-                "Academic_support": [self.Academic_support],
-                "Age_Range": [self.Age_Range],
-                "Level_of_Study": [self.Level_of_Study],
-                "Health_Challenges": [self.Health_Challenges],
-                "School_Activities_Stress": [self.School_Activities_Stress],
-                "Internet_Access": [self.Internet_Access],
-                "CGPA_Range": [self.CGPA_Range],
-                "Parental_Level_of_Education": [self.Parental_Level_of_Education],
-                "Hours_of_Study_per_Week": [self.Hours_of_Study_per_Week],
-                "Class_Attendance": [self.Class_Attendance],
-                "Faculty": [self.Faculty],
-                "Financial_Support_Source": [self.Financial_Support_Source],
-                "Admission_Year": [self.Admission_Year]
-            }
-
-            return pd.DataFrame(custom_data_input_dict)
-
+            return pd.DataFrame([self.data])
         except Exception as e:
             raise CustomException(e, sys)
-        

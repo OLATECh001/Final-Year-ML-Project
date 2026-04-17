@@ -4,6 +4,7 @@ matplotlib
 seaborn
 catboost
 xgboost
+adaboost
 scikit-learn
 lightgbm
 dill
